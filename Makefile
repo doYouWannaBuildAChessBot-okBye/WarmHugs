@@ -7,7 +7,8 @@ OBJDIR	=	bin/
 SRC		=	main.c
 INC		=	$(addprefix -I,$(INCDIR))
 VPATH	=	$(INCDIR) $(SRCDIR) $(OBJDIR)
-CFLAGS	=	$(INC)
+CC		=	gcc
+CFLAGS	=	$(INC) -mpopcnt
 NAME	=	O1-af
 
 $(NAME)	:	$(OBJ)
@@ -15,6 +16,7 @@ $(NAME)	:	$(OBJ)
 
 clean	:
 	rm -f $(OBJ)
+
 fclean	:
 	$(MAKE) clean
 	rm -f $(NAME)
