@@ -49,14 +49,14 @@ struct s_material
 # define FFILE (0x2020202020202020LL)
 # define GFILE (0x4040404040404040LL)
 # define HFILE (0x8080808080808080LL)
-# define ROW1 (0xFFLL << 0)
-# define ROW2 (0xFFLL << 1)
-# define ROW3 (0xFFLL << 2)
-# define ROW4 (0xFFLL << 3)
-# define ROW5 (0xFFLL << 4)
-# define ROW6 (0xFFLL << 5)
-# define ROW7 (0xFFLL << 6)
-# define ROW8 (0xFFLL << 7)
+# define ROW1 (0xFFLL << 0 * 8)
+# define ROW2 (0xFFLL << 1 * 8)
+# define ROW3 (0xFFLL << 2 * 8)
+# define ROW4 (0xFFLL << 3 * 8)
+# define ROW5 (0xFFLL << 4 * 8)
+# define ROW6 (0xFFLL << 5 * 8)
+# define ROW7 (0xFFLL << 6 * 8)
+# define ROW8 (0xFFLL << 7 * 8)
 
 # define START ((t_board){\
 		.wK = EFILE & ROW1,\

@@ -22,7 +22,7 @@ unsigned int
 uint64_t num
 )
 {
-	unsigned int	ret;
+	uint64_t	ret;
 
 	if (__builtin_cpu_supports("popcnt"))
 		asm("popcnt %1,%0" : "=r"(ret) : "rm"(num) : "cc");
@@ -64,7 +64,7 @@ char **argv
 	t_material	material;
 
 	printf("please enter a numbie\n");
-	scanf("%zu", &numbie);
+	numbie = 1ull << 63;
 	asm("popcnt %1,%0" : "=r"(count) : "rm"(numbie) : "cc");
 	printf("%zu popcnt %zu\n", numbie, count);
 	board = START;
