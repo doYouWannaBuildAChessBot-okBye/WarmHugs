@@ -8,7 +8,7 @@ SRC		=	main.c
 INC		=	$(addprefix -I,$(INCDIR))
 VPATH	=	$(INCDIR) $(SRCDIR) $(OBJDIR)
 CC		=	gcc
-CFLAGS	=	$(INC) -mpopcnt
+CFLAGS	=	$(INC) -mpopcnt -g
 NAME	=	O1-af
 
 $(NAME)	:	$(OBJ)

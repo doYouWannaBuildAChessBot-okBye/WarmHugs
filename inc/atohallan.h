@@ -18,12 +18,59 @@ struct s_chessboard
 	uint64_t	wP;
 	uint64_t	bP;
 };
+typedef struct s_material t_material;
+struct s_material
+{
+	char	wK;
+	char	bK;
+	char	wQ;
+	char	bQ;
+	char	wB;
+	char	bB;
+	char	wN;
+	char	bN;
+	char	wR;
+	char	bR;
+	char	wP;
+	char	bP;
+};
 
-#define EMPTY ((uint64_t)0)
-#define FULL ((uint64_t)-1)
-#define WHITE(x) ((x).wK | (x).wQ | (x).wB | (x).wN | (x).wR | (x).wP)
-#define BLACK(x) ((x).bK | (x).bQ | (x).bB | (x).bN | (x).bR | (x).bP)
-#define ALL(x) (WHITE(x) | BLACK(x))
-#define OPEN(x) (~(ALL(x)))
+# define EMPTY ((uint64_t)0)
+# define FULL ((uint64_t)-1)
+# define WHITE(x) ((x).wK | (x).wQ | (x).wB | (x).wN | (x).wR | (x).wP)
+# define BLACK(x) ((x).bK | (x).bQ | (x).bB | (x).bN | (x).bR | (x).bP)
+# define ALL(x) (WHITE(x) | BLACK(x))
+# define OPEN(x) (~(ALL(x)))
+# define AFILE (0x0101010101010101LL)
+# define BFILE (0x0202020202020202LL)
+# define CFILE (0x0404040404040404LL)
+# define DFILE (0x0808080808080808LL)
+# define EFILE (0x1010101010101010LL)
+# define FFILE (0x2020202020202020LL)
+# define GFILE (0x4040404040404040LL)
+# define HFILE (0x8080808080808080LL)
+# define ROW1 (0xFFLL << 0)
+# define ROW2 (0xFFLL << 1)
+# define ROW3 (0xFFLL << 2)
+# define ROW4 (0xFFLL << 3)
+# define ROW5 (0xFFLL << 4)
+# define ROW6 (0xFFLL << 5)
+# define ROW7 (0xFFLL << 6)
+# define ROW8 (0xFFLL << 7)
+
+# define START ((t_board){\
+		.wK = EFILE & ROW1,\
+		.bK = EFILE & ROW8,\
+		.wQ = DFILE & ROW1,\
+		.bQ = DFILE & ROW8, \
+		.wB = (CFILE | FFILE) & ROW1,\
+		.bB = (CFILE | FFILE) & ROW8,\
+		.wN = (BFILE | GFILE) & ROW1,\
+		.bN = (BFILE | GFILE) & ROW8,\
+		.wR = (AFILE | HFILE) & ROW1,\
+		.bR = (AFILE | HFILE) & ROW8,\
+		.wP = ROW2, \
+		.bP = ROW7 \
+		})
 
 #endif
