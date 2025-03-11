@@ -35,6 +35,24 @@ struct s_material
 	char	bP;
 };
 
+enum piece
+{
+	none,
+	multiple,
+	whiteKing,
+	blackKing,
+	whiteQueen,
+	blackQueen,
+	whiteBishop,
+	blackBishop,
+	whiteKnight,
+	blackKnight,
+	whiteRook,
+	blackRook,
+	whitePawn,
+	blackPawn
+};
+
 # define EMPTY ((uint64_t)0)
 # define FULL ((uint64_t)-1)
 # define WHITE(x) ((x).wK | (x).wQ | (x).wB | (x).wN | (x).wR | (x).wP)
