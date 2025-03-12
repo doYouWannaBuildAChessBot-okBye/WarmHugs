@@ -4,7 +4,7 @@ INCDIR	=	inc
 SRCDIR	=	src
 OBJ		=	$(SRC:.c=.o)
 OBJDIR	=	bin/
-SRC		=	main.c
+SRC		=	main.c popcount.c
 INC		=	$(addprefix -I,$(INCDIR))
 VPATH	=	$(INCDIR) $(SRCDIR) $(OBJDIR)
 CC		=	gcc

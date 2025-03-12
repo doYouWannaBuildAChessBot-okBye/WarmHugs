@@ -91,4 +91,8 @@ enum piece
 		.bP = ROW7 \
 		})
 
+unsigned int
+	popcount(
+		uint64_t num
+		);
 #endif
