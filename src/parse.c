@@ -75,8 +75,43 @@ const char *fen
 	{
 		const char *start  = fen;
 		if (*fen == 'K') {
+			pos->castling_rights[WHITE] |= KING_SIDE;
+			fen++;
 		}
+		if (*fen == 'Q') {
+			pos->castling_rights[WHITE] |= QUEEN_SIDE;
+			fen++;
+		}
+		if (*fen == 'k') {
+			pos->castling_rights[BLACK] |= KING_SIDE;
+			fen++;
+		}
+		if (*fen == 'q') {
+			pos->castling_rights[BLACK] |= QUEEN_SIDE;
+			fen++;
+		}
+		if (fen == start)
+			return (FAILURE);
 	}
-
-	return SUCCESS ;
+	if (*fen++ != ' ')
+		return (FAILURE);
+	pos->en_passant_square = parse_en_passant(fen);
+	if (pos->en_passant_square != NO_SQUARE) {
+		fen += 2;
+	} else if (*fen == '-') {
+		fen++;
+	} else
+		return (FAILURE);
+	for (int index = 0; index < 2; index++)
+	{
+		if (*fen++ != ' ')
+			return (FAILURE);
+		if (*fen < '0' || *fen > '9')
+			return (FAILURE);
+		while (*fen >= '0' && *fen <= '9')
+			fen++;
+	}
+	if (*fen)
+		return (FAILURE);
+	return (SUCCESS);
 }

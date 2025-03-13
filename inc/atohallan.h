@@ -104,6 +104,9 @@ struct search_info {
 # define NO_TYPE 6
 # define SUCCESS 0
 # define FAILURE 1
+# define KING_SIDE 1
+# define QUEEN_SIDE 2
+# define NO_SQUARE 64
 
 # define START ((t_board){\
 		.wK = EFILE & ROW1,\
