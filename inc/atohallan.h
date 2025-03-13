@@ -52,11 +52,29 @@ enum piece
 	whitePawn,
 	blackPawn
 };
+struct position {
+	t_board	board;
+	int side_to_move;
+	int castling_rights[2];
+	int en_passant_square;
+};
+struct move {
+	int from_square;
+	int to_square;
+	int promotion_type;
+};
+struct search_info {
+	const struct position *pos;
+	int time[2];
+	int increment[2];
+};
 
 # define EMPTY ((uint64_t)0)
 # define FULL ((uint64_t)-1)
-# define WHITE(x) ((x).wK | (x).wQ | (x).wB | (x).wN | (x).wR | (x).wP)
-# define BLACK(x) ((x).bK | (x).bQ | (x).bB | (x).bN | (x).bR | (x).bP)
+# define WHITE 0
+# define BLACK 1
+# define WHITE_PCS(x) ((x).wK | (x).wQ | (x).wB | (x).wN | (x).wR | (x).wP)
+# define BLACK_PCS(x) ((x).bK | (x).bQ | (x).bB | (x).bN | (x).bR | (x).bP)
 # define ALL(x) (WHITE(x) | BLACK(x))
 # define OPEN(x) (~(ALL(x)))
 # define AFILE (0x0101010101010101LL)
@@ -75,6 +93,17 @@ enum piece
 # define ROW6 (0xFFLL << 5 * 8)
 # define ROW7 (0xFFLL << 6 * 8)
 # define ROW8 (0xFFLL << 7 * 8)
+# define FILE(x) ((x) & 7)
+# define RANK(x) ((x) / 8)
+# define PAWN 0
+# define KNIGHT 1
+# define BISHOP 2
+# define ROOK 3
+# define QUEEN 4
+# define KING 5
+# define NO_TYPE 6
+# define SUCCESS 0
+# define FAILURE 1
 
 # define START ((t_board){\
 		.wK = EFILE & ROW1,\
